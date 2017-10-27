@@ -1,10 +1,10 @@
 .PHONY: build run clean
 
 build:
-	docker build -t existenz/mergeback:latest .
+	docker build -t existenz/merge-back:latest .
 
 run:
-	docker run -ti --rm existenz/mergeback:latest sh
+	docker run -ti --rm existenz/merge-back:latest sh
 
 clean:
-	docker rmi existenz/mergeback:latest
+	docker rmi existenz/merge-back:latest

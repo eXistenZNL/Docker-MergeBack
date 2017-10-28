@@ -9,8 +9,7 @@ install:
 
 script:
   - make test
-  - make container
-  - make containertest
+  - make build
 
 after_success:
   - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then

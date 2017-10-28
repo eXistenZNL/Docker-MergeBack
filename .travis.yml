@@ -1,0 +1,19 @@
+language: bash
+
+services:
+  - docker
+
+install:
+  - git clone --shallow --branch v0.4.0 git@github.com:sstephenson/bats.git
+  - export PATH=./bats/bin:$PATH
+
+script:
+  - make test
+  - make container
+  - make containertest
+
+after_success:
+  - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then
+    docker login -u="existenz" -p="$DOCKER_PASSWORD";
+    docker push existenz/merge-back;
+    fi

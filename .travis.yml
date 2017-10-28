@@ -4,7 +4,7 @@ services:
   - docker
 
 install:
-  - git clone --shallow=1 --branch v0.4.0 https://github.com/sstephenson/bats.git
+  - git clone --depth=1 --branch v0.4.0 https://github.com/sstephenson/bats.git
   - export PATH=./bats/bin:$PATH
 
 script:

@@ -10,5 +10,5 @@ clean:
 	docker rmi existenz/merge-back:latest
 
 test:
-	bats tests.bats
+	bats tests/
 

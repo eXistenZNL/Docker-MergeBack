@@ -15,18 +15,24 @@ with what's live on production. This container ensures that all open branches ar
 
 ## So how does it work?
 
-In this example we want to make sure our branch gets updated with everything that's merged into master.
+Running this container can be done everywhere, but was mainly built to run inside a GitLab-CI pipeline. In the example
+below, we will show you how.
 
-1) In your `.gitlab-ci.yml`, add the following stage:
+In the example we want to make sure our branch gets updated with everything that's merged into master.
+
+### Merge back stage
+
+In your `.gitlab-ci.yml`, add the following stage:
 
 ```yaml
 stages:
     # All your previous stages go here
     - merge back # End with a merge-back
-
 ```
 
-2) Add the job that runs in the merge back stage to your `.gitlab-ci.yml`:
+### Merge back job
+
+Add the job that runs in the merge back stage to your `.gitlab-ci.yml`:
 
 ```yaml
 # ======================
@@ -43,7 +49,9 @@ update branches:
         - merge-back
 ```
 
-3) Make sure the following secret variables are set:
+### Secret variables
+
+Make sure the following secret variables are set:
 
 Variable | Default value | Context
 --- | --- | ---
@@ -54,9 +62,11 @@ MBB_GIT_NAME | MergeBackBot3000 | What username should be used for your git merg
 MBB_GIT_FORK | git@git.local | The repository URL that you want to merge-back bot to be working for
 MBB_PRIVATE_KEY | - | A private key, that has access to the project you want to merge back for, is needed to authorise the merge-backs 
 
-4) Add your public key (for the private key you used in step 3) to the "Deploy keys" in the GitLab project config:
+### Configure deploy key
 
-GitLab Project > Config > Repsitory > Deploy keys > add
+Add your public key (for the private key you used in step 3) to the "Deploy keys" in the GitLab project config:
+
+GitLab Project > Config > Repository > Deploy keys > add
 
 **Note: Make sure you give the deploy key write access**
 

@@ -2,7 +2,7 @@
 
 test -d .git
 if [ "$?" != "0" ]; then
-    echo "This is no git repository. Exiting..."
+    echo "This is not a git repository. Exiting..."
     exit 1
 fi
 

@@ -10,7 +10,7 @@ setup() {
     cd $BATS_TMPDIR
     rm -rf .git
     run $PROJECT_DIR/merge-back.sh
-    [ "${lines[6]}" = "This is no git repository. Exiting..." ]
+    [ "${lines[6]}" = "This is not a git repository. Exiting..." ]
     [ "$status" -eq 1 ]
 }
 
@@ -19,6 +19,6 @@ setup() {
     cd $BATS_TMPDIR
     rm -rf .git
     run $PROJECT_DIR/merge-back.sh
-    [ "${lines[6]}" = "This is no git repository. Exiting..." ]
+    [ "${lines[6]}" = "This is not a git repository. Exiting..." ]
     [ "$status" -eq 0 ]
 }

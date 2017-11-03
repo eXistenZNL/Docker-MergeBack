@@ -28,7 +28,6 @@ __repository_setup () {
 __repository_create_feature () {
     cd $GIT_ORIGIN_DIR
     feature=$1
-    git checkout master
     git checkout -b feature/$feature
     echo "Feature commit" >> feature-$feature.txt
     git add -A

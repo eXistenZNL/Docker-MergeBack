@@ -1,14 +1,8 @@
 #!/usr/bin/env sh
 
-test -d .git
-if [ "$?" != "0" ]; then
-    echo "This is not a git repository. Exiting..."
-    exit 1
-fi
-
 export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa-mergeback"
 
-EXIT_CODES=${MBB_EXIT_CODES:-"false"}
+EXIT_CODES=${MBB_EXIT_CODES:-"true"}
 GIT_BRANCH=${MBB_GIT_BRANCH:-"master"}
 GIT_EMAIL=${MBB_GIT_EMAIL:-"bot3000@merge.back"}
 GIT_NAME=${MBB_GIT_NAME:-"MergeBackBot3000"}
@@ -23,6 +17,7 @@ mbb_setup () {
     git checkout --quiet $GIT_BRANCH
     git reset --quiet --hard HEAD
     git pull --quiet origin $GIT_BRANCH
+    git fetch --quiet origin
     git remote | grep mergeback > /dev/null || git remote add mergeback $GIT_FORK
 }
 
@@ -38,10 +33,11 @@ mbb_info () {
 }
 
 mbb_exit () {
+    exitCode=$1
     if [ "$EXIT_CODES" = "false" ]; then
-        exit 0;
+        echo 0;
     fi
-    exit 1;
+    echo $exitCode;
 }
 
 mbb_merge () {
@@ -66,6 +62,8 @@ mbb_merge () {
         echo ""
         echo "!! Some merges failed. Please manually resolve conflicts and push..."
     fi
+
+    return $failed
 }
 
 mbb_push () {
@@ -90,11 +88,23 @@ echo " |__/__/__/\\____\\|__| \\___  / \\____\\|_______/ \\_____\\_____\\__|__\\
 echo "                     /_____/                                           by eXistenZNL"
 echo ""
 
+test -d .git
+if [ "$?" -ne 0 ]; then
+    echo "This is not a git repository. Exiting..."
+    exit $( mbb_exit 1 )
+fi
+
 mbb_setup
 branches=$(git branch -a | grep remotes/origin | grep -v master | sed 's/remotes\/origin\///')
 mbb_info "$branches"
 echo ""
 mbb_merge "$branches"
+merge_status=$?
 echo ""
-mbb_push "$branches"
+mbb_push
+push_status=$?
 
+if [ "$merge_status" -eq 1 -o  "$push_status" -eq 1 ]; then
+    exit $( mbb_exit 1 )
+fi
+exit $(mbb_exit 0)

@@ -12,7 +12,7 @@ script:
 
 after_success:
   - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then
-    make build
+    make build;
     docker login -u="existenz" -p="$DOCKER_PASSWORD";
     docker push existenz/merge-back;
     fi

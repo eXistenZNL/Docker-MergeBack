@@ -1,6 +1,6 @@
 # MergeBack Bot
 
-[![Docker Build Status](https://img.shields.io/travis/eXistenZNL/Docker-MergeBack.svg?style=flat-square)](https://travis-ci.org/eXistenZNL/Docker-MergeBack) [![Docker Pulls](https://img.shields.io/docker/pulls/existenz/merge-back.svg?style=flat-square)](https://hub.docker.com/r/existenz/merge-back/) [![License](https://img.shields.io/github/license/existenznl/docker-mergeback.svg?style=flat-square)](https://github.com/eXistenZNL/Docker-MergeBack/blob/master/LICENSE)
+[![Docker Build Status](https://img.shields.io/github/workflow/status/eXistenZNL/Docker-Mergeback/Build%20containers?style=flat-square)](https://github.com/eXistenZNL/Docker-MergeBack/actions) [![Docker Pulls](https://img.shields.io/docker/pulls/existenz/merge-back.svg?style=flat-square)](https://hub.docker.com/r/existenz/merge-back/) [![License](https://img.shields.io/github/license/existenznl/docker-mergeback.svg?style=flat-square)](https://github.com/eXistenZNL/Docker-MergeBack/blob/master/LICENSE)
 
 ## About
 

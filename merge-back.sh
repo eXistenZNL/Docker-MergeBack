@@ -45,7 +45,7 @@ mbb_merge () {
     failed=0
     branches=$1
     for branch in $branches; do
-        echo -n "Merging master into $branch... "
+        echo -n "Merging $GIT_BRANCH into $branch... "
         git checkout --quiet $branch
         git pull --quiet origin $branch > /dev/null 2>&1
         git merge --no-ff --quiet --no-edit $GIT_BRANCH > /dev/null 2>&1

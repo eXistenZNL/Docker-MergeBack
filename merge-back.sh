@@ -25,7 +25,7 @@ mbb_info () {
     branches=$1
     echo "Branches found:"
     for branch in $branches; do
-        diff=$(git rev-list --left-right --count remotes/origin/master...remotes/origin/$branch)
+        diff=$(git rev-list --left-right --count remotes/origin/$GIT_BRANCH...remotes/origin/$branch)
         behind=$(echo $diff | cut -d ' ' -f 1)
         ahead=$(echo $diff | cut -d ' ' -f 2)
         echo "$branch ($behind behind, $ahead ahead)"
@@ -48,7 +48,7 @@ mbb_merge () {
         echo -n "Merging master into $branch... "
         git checkout --quiet $branch
         git pull --quiet origin $branch > /dev/null 2>&1
-        git merge --no-ff --quiet --no-edit master > /dev/null 2>&1
+        git merge --no-ff --quiet --no-edit $GIT_BRANCH > /dev/null 2>&1
         if [ "$?" = "0" ]; then
             echo "done."
         else
@@ -95,7 +95,7 @@ if [ "$?" -ne 0 ]; then
 fi
 
 mbb_setup
-branches=$(git branch -a | grep remotes/origin | grep -v master | sed 's/remotes\/origin\///')
+branches=$(git branch -a | grep remotes/origin | grep -v $GIT_BRANCH | sed 's/remotes\/origin\///')
 mbb_info "$branches"
 echo ""
 mbb_merge "$branches"

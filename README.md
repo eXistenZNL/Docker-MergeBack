@@ -1,6 +1,6 @@
 # MergeBack Bot
 
-[![Docker Build Status](https://img.shields.io/github/workflow/status/eXistenZNL/Docker-Mergeback/Build%20containers?style=flat-square)](https://github.com/eXistenZNL/Docker-MergeBack/actions) [![Docker Pulls](https://img.shields.io/docker/pulls/existenz/merge-back.svg?style=flat-square)](https://hub.docker.com/r/existenz/merge-back/) [![License](https://img.shields.io/github/license/existenznl/docker-mergeback.svg?style=flat-square)](https://github.com/eXistenZNL/Docker-MergeBack/blob/master/LICENSE) [![Sponsors](https://img.shields.io/github/sponsors/eXistenZNL?color=hotpink&style=flat-square)](https://github.com/sponsors/eXistenZNL)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/eXistenZNL/Docker-Mergeback/build-containers.yml?branch=master&style=flat-square)](https://github.com/eXistenZNL/Docker-MergeBack/actions) [![Docker Pulls](https://img.shields.io/docker/pulls/existenz/merge-back.svg?style=flat-square)](https://hub.docker.com/r/existenz/merge-back/) [![License](https://img.shields.io/github/license/existenznl/docker-mergeback.svg?style=flat-square)](https://github.com/eXistenZNL/Docker-MergeBack/blob/master/LICENSE) [![Sponsors](https://img.shields.io/github/sponsors/eXistenZNL?color=hotpink&style=flat-square)](https://github.com/sponsors/eXistenZNL)
 
 ## About
 
@@ -10,7 +10,7 @@ command that does all the heavy lifting.
 
 Running this container can be done in every CI pipeline that supports Docker containers, but was mainly built to run inside a GitLab-CI pipeline.
 
-Special thanks to [RickvdStaaij](https://github.com/RickvdStaaij) for helping me out with the ASCII art and the inspiration
+Special thanks to [Rick van der Staaij](https://github.com/rick-nu) for helping me out with the ASCII art and the inspiration
 for building this small tool as part of a much larger project / process, in which we explored moving from a classic DTAP environment
 to a containerized continuous deployment environment with review applications. May your builds be concurrent and your
 [CIMonitor](https://github.com/CIMonitor/CIMonitor) green.
